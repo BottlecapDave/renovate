@@ -1,6 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>renovatebot/.github"],
   "assignees": ["rarkins", "viceice"],
   "semanticCommitScope": "deps",
   "automergeType": "pr",
@@ -8,6 +7,7 @@
   "dockerfile": {
     "semanticCommitType": "build"
   },
+  "enabledManagers": ["asdf"],
   "packageRules": [
     {
       "matchPackageNames": ["containerbase/node"],
@@ -51,6 +51,12 @@
       "matchPackageNames": ["node"],
       "matchUpdateTypes": ["major"],
       "additionalBranchPrefix": "major"
+    },
+    {
+      "description": "set branch prefix for node major updates to split from minor updates",
+      "matchManagers": ["asdf"],
+      "matchPackageNames": ["dotnet-core"],
+      "matchUpdateTypes": ["minor", "patch"]
     }
   ],
   "customManagers": [
